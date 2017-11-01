@@ -14,4 +14,4 @@ Infix "•" := op (left associativity, at level 50): type_scope.
 
 Axiom op_associativity : forall a b c, a • (b • c) = (a • b) • c.
 
-Axiom op_idempotence : forall a, a • a = a.
+Axiom op_idempotency : forall a, a • a = a.
