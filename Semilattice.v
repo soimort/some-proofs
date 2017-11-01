@@ -17,3 +17,15 @@ Axiom op_commutativity : forall a b, a • b = b • a.
 Axiom op_associativity : forall a b c, a • (b • c) = (a • b) • c.
 
 Axiom op_idempotency : forall a, a • a = a.
+
+(* TODO: order-theoretic definition
+   Is this actually a total order? *)
+Parameter po : S -> S -> Prop.
+Infix "≤" := po (left associativity, at level 50): type_scope.
+Infix "≥" := po (left associativity, at level 50): type_scope.
+
+(* The existence of infimum gives rise to a meet-semilattice. *)
+Axiom infimum_existence : forall a b, a ≤ b <-> a = a • b.
+
+(* The existence of supremum gives rise to a join-semilattice. *)
+Axiom supremum_existence : forall a b, a ≥ b <-> a = a • b.
