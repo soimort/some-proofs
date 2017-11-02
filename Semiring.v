@@ -22,7 +22,7 @@ Infix "•" := mult (left associativity, at level 50): type_scope.
 
 Axiom addition_associativity : forall a b c, a ➕ (b ➕ c) = (a ➕ b) ➕ c.
 
-Axiom addition_identity_element_existence : forall a, a ➕ O = a /\ O ➕ a = a.
+Axiom addition_identity_element_existence : forall a, a ➕ O = a.
 
 Axiom addition_commutativity : forall a b, a ➕ b = b ➕ a.
 
