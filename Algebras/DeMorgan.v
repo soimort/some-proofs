@@ -36,7 +36,18 @@ Axiom meet_identity_element_existence : forall a, a ∧ I = a /\ I ∧ a = a.
 
 (* distributive lattice *)
 Axiom left_distributivity : forall a b c, a ∨ (b ∧ c) = (a ∨ b) ∧ (a ∨ c).
-Axiom right_distributivity: forall a b c, (a ∧ b) ∨ c = (a ∨ c) ∧ (b ∨ c).
+(* right_distributivity follows from join_commutativity and left_distributivity:
+   (a ∧ b) ∨ c = c ∨ (a ∧ b) = (c ∨ a) ∧ (c ∨ b) = (a ∨ c) ∧ (b ∨ c).
+ *)
+Theorem right_distributivity: forall a b c, (a ∧ b) ∨ c = (a ∨ c) ∧ (b ∨ c).
+Proof.
+  intros a b c.
+  rewrite <- join_commutativity.
+  rewrite -> left_distributivity.
+  pattern (c ∨ a); rewrite <- join_commutativity.
+  pattern (c ∨ b); rewrite <- join_commutativity.
+  trivial.
+Qed.
 
 (* De Morgan's laws *)
 Axiom de_morgan_1 : forall a b, ¬(a ∧ b) = ¬a ∨ ¬b.
